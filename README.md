@@ -1,2 +1,2 @@
 # linumiz-assessment
-This repository contains assessment problem solution
+This repository contains linumiz assessment problem solution for 2022.
