@@ -1,0 +1,93 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+	char data;
+	struct node *link;
+};
+
+void insert_node(struct node *head, char data){
+    struct node *ptr, *temp;
+    ptr = head;
+
+    temp = (struct node *)malloc(sizeof(struct node));
+    temp->data = data;
+    temp->link = NULL;
+
+    while(ptr->link != NULL){
+        ptr = ptr->link;
+    }
+    ptr->link = temp;
+}
+
+void print_data_1(struct node *head){
+    if(head == NULL){
+        printf("Linked list is empty\n");
+    }
+    else{
+        struct node *ptr;
+        ptr = head;
+        while(ptr != NULL){
+            printf("%c", ptr->data);
+			if(ptr->data == 'w'){
+				printf("\r");
+			}
+            ptr = ptr->link;
+
+		}
+    }
+}
+
+void print_data_2(struct node *head){
+    if(head == NULL){
+        printf("Linked list is empty\n");
+    }
+    else{
+        struct node *ptr;
+        ptr = head;
+        while(ptr != NULL){
+            printf("%c", ptr->data);
+			if(ptr->data == 'w'){
+				break;
+			}
+            ptr = ptr->link;
+		}
+		printf("\n");
+    }
+}
+
+struct node* reverse(struct node *head){
+	struct node *previous = NULL;
+	struct node *next = NULL;
+	while(head != NULL){
+		next = head->link;
+		head->link = previous;
+		previous = head;
+		head = next;
+	}
+	head = previous;
+	return head;
+} 
+
+int main(){
+	struct node *head;
+	head = (struct node *)malloc(sizeof(struct node));
+	head->data = 'h';
+	head->link = NULL;
+
+	insert_node(head, 'e');
+	insert_node(head, 'l');
+	insert_node(head, 'l');
+	insert_node(head, 'o');
+	insert_node(head, 'w');
+	insert_node(head, 'o');
+	insert_node(head, 'r');
+	insert_node(head, 'l');
+	insert_node(head, 'd');
+
+	head = reverse(head);
+	print_data_1(head);
+	printf(" ");
+	print_data_2(head);
+	
+}
