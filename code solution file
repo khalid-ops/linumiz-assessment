@@ -69,7 +69,7 @@ struct node* reverse(struct node *head){
 	return head;
 } 
 
-int main(){
+int main(int argc, char* argv[]){
 	struct node *head;
 	head = (struct node *)malloc(sizeof(struct node));
 	head->data = 'h';
